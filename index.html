@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BARBER MAFIA — Барбершоп</title>
+<meta name="description" content="BARBER MAFIA — современный барбершоп. Запись онлайн.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#0b0b0b;
+  --panel:#141414;
+  --panel2:#1b1b1b;
+  --text:#f3f0e9;
+  --muted:#9c9a94;
+  --line:#292929;
+  --accent:#d7ff3f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:Manrope,Arial,sans-serif;line-height:1.5;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+
+/* HEADER */
+header{
+  position:absolute;z-index:10;top:0;left:0;width:100%;
+  padding:24px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Oswald,sans-serif;font-size:27px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:30px;color:#c7c5bf;font-size:14px}
+.navlinks a:hover{color:white}
+.nav-btn{
+  border:1px solid #454545;padding:11px 17px;border-radius:999px;
+  font-size:13px;font-weight:700;
+}
+
+/* HERO */
+.hero{min-height:850px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 75% 35%,rgba(215,255,63,.10),transparent 24%),
+    radial-gradient(circle at 65% 70%,rgba(255,255,255,.07),transparent 28%),
+    linear-gradient(115deg,#090909 0%,#111 55%,#080808 100%);
+}
+.hero:after{
+  content:"";position:absolute;right:-100px;top:100px;width:560px;height:560px;
+  border:1px solid #303030;border-radius:50%;
+  box-shadow:0 0 0 70px rgba(255,255,255,.015),0 0 0 140px rgba(255,255,255,.012);
+}
+.hero-content{position:relative;z-index:2;padding-top:90px}
+.eyebrow{display:flex;align-items:center;gap:10px;color:#b9b7b0;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{
+  font-family:Oswald,sans-serif;text-transform:uppercase;
+  font-size:clamp(74px,12vw,158px);line-height:.86;letter-spacing:-3px;
+  max-width:900px;
+}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px #85827a}
+.hero-bottom{margin-top:42px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+.hero-copy{max-width:420px;color:#a9a69f;font-size:16px}
+.actions{display:flex;gap:12px;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 24px;border-radius:999px;font-size:14px;font-weight:800;
+  transition:.2s;
+}
+.btn-main{background:var(--accent);color:#101010}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid #444;color:#eee}
+.btn-ghost:hover{border-color:#777}
+.hero-tag{
+  width:190px;height:190px;border:1px solid #333;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#85827b;
+}
+
+/* TICKER */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.ticker-inner{padding:18px 0;font-family:Oswald;font-size:21px;letter-spacing:1px;text-transform:uppercase}
+.ticker span{color:#555;margin:0 24px}
+
+/* INTRO */
+.section{padding:120px 0}
+.section-head{display:flex;justify-content:space-between;gap:40px;margin-bottom:55px}
+.kicker{font-size:12px;color:var(--accent);letter-spacing:2px;text-transform:uppercase}
+.section-title{font-family:Oswald;text-transform:uppercase;font-size:clamp(44px,7vw,82px);line-height:.95;max-width:720px}
+.section-text{max-width:360px;color:var(--muted);font-size:15px;padding-top:10px}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+  min-height:330px;background:var(--panel);border:1px solid var(--line);
+  padding:30px;display:flex;flex-direction:column;justify-content:space-between;
+  transition:.25s;position:relative;overflow:hidden;
+}
+.card:before{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;
+  right:-70px;top:-70px;border:1px solid #292929;
+}
+.card:hover{transform:translateY(-5px);border-color:#444}
+.num{font-family:Oswald;color:#666;font-size:18px}
+.card h3{font-family:Oswald;text-transform:uppercase;font-size:34px;line-height:1}
+.card p{color:var(--muted);font-size:14px;max-width:280px;margin-top:12px}
+.card-bottom{display:flex;align-items:center;justify-content:space-between}
+.arrow{width:40px;height:40px;border:1px solid #393939;border-radius:50%;display:grid;place-items:center;color:var(--accent)}
+
+/* FEATURE */
+.feature{
+  display:grid;grid-template-columns:1fr 1fr;min-height:520px;
+  border:1px solid var(--line);background:var(--panel);
+}
+.feature-visual{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 45% 40%,#3b3b3b 0 2%,transparent 3%),
+    radial-gradient(circle at 55% 48%,#262626 0 16%,transparent 17%),
+    linear-gradient(135deg,#1c1c1c,#070707);
+}
+.feature-visual:before{
+  content:"BM";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:Oswald;font-size:210px;color:transparent;-webkit-text-stroke:1px #414141;
+}
+.feature-visual:after{
+  content:"EST. 2024";position:absolute;bottom:28px;left:30px;
+  color:#777;font-size:11px;letter-spacing:3px;
+}
+.feature-copy{padding:55px;display:flex;flex-direction:column;justify-content:center}
+.feature-copy h2{font-family:Oswald;text-transform:uppercase;font-size:58px;line-height:.95;margin:14px 0 22px}
+.feature-copy p{color:var(--muted);max-width:440px;font-size:15px}
+.points{display:grid;gap:14px;margin-top:30px}
+.point{display:flex;gap:12px;align-items:center;color:#d2d0ca;font-size:14px}
+.check{width:23px;height:23px;border:1px solid #3b3b3b;border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:12px}
+
+/* MASTERS */
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.master{
+  height:410px;background:linear-gradient(145deg,#232323,#0d0d0d);
+  border:1px solid var(--line);padding:24px;display:flex;align-items:flex-end;
+  position:relative;overflow:hidden;
+}
+.master:before{
+  content:"";position:absolute;left:50%;top:15%;transform:translateX(-50%);
+  width:210px;height:290px;border-radius:48% 48% 12% 12%;
+  background:linear-gradient(180deg,#353535,#151515);
+  filter:blur(.2px);
+}
+.master:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(transparent 45%,rgba(0,0,0,.9) 100%);
+}
+.master-info{position:relative;z-index:2}
+.master-num{color:var(--accent);font-size:11px;letter-spacing:2px}
+.master h3{font-family:Oswald;text-transform:uppercase;font-size:32px;margin-top:4px}
+.master p{color:#aaa;font-size:13px}
+
+/* CTA */
+.cta{
+  padding:95px 0;background:var(--accent);color:#101010;
+}
+.cta-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.cta h2{font-family:Oswald;text-transform:uppercase;font-size:clamp(55px,8vw,100px);line-height:.88;max-width:700px}
+.cta p{max-width:320px;font-size:14px;margin-bottom:8px}
+.cta .btn{background:#101010;color:#fff;margin-top:25px}
+
+/* FOOTER */
+footer{padding:32px 0;border-top:1px solid #292929;color:#777;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}
+.footer-logo{font-family:Oswald;font-size:22px;color:#eee}
+
+@media(max-width:800px){
+  .container{width:min(100% - 28px,1180px)}
+  .navlinks{display:none}
+  .hero{min-height:730px}
+  .hero:after{right:-250px;top:160px}
+  h1{font-size:clamp(68px,20vw,120px);letter-spacing:-2px}
+  .hero-bottom{display:block}
+  .hero-tag{display:none}
+  .section{padding:80px 0}
+  .section-head{display:block}
+  .section-text{margin-top:24px}
+  .services,.masters,.feature{grid-template-columns:1fr}
+  .card{min-height:260px}
+  .feature-visual{min-height:350px}
+  .feature-copy{padding:35px}
+  .feature-copy h2{font-size:48px}
+  .master{height:360px}
+  .cta-inner{display:block}
+  .cta h2{font-size:64px}
+  .footer-inner{display:block}
+  .footer-inner div+div{margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">BARBER <span>MAFIA</span></a>
+    <nav class="navlinks">
+      <a href="#services">Услуги</a>
+      <a href="#about">О нас</a>
+      <a href="#masters">Мастера</a>
+    </nav>
+    <a class="nav-btn" href="https://taplink.cc/barbermafia" target="_blank">Записаться ↗</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow"><span class="dot"></span> Барбершоп нового поколения</div>
+    <h1>YOUR<br><em>STYLE.</em><br>YOUR RULES.</h1>
+    <div class="hero-bottom">
+      <div>
+        <p class="hero-copy">Место, где стрижка — это не просто услуга. Это часть твоего образа, характера и настроения.</p>
+        <div class="actions">
+          <a class="btn btn-main" href="https://taplink.cc/barbermafia" target="_blank">Записаться на стрижку ↗</a>
+          <a class="btn btn-ghost" href="#services">Смотреть услуги</a>
+        </div>
+      </div>
+      <div class="hero-tag">Cut<br>Style<br>Attitude</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="container ticker-inner">BARBER MAFIA <span>✦</span> CUT • STYLE • ATTITUDE <span>✦</span> BARBER MAFIA <span>✦</span> CUT • STYLE • ATTITUDE</div>
+</div>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">01 / услуги</div>
+        <h2 class="section-title">Выглядеть<br>как надо.</h2>
+      </div>
+      <p class="section-text">Подбираем форму и стиль под тебя, а не под шаблон. Перед работой обсуждаем результат — после ты уходишь с ним.</p>
+    </div>
+
+    <div class="services">
+      <article class="card">
+        <div class="num">01</div>
+        <div>
+          <h3>Мужская<br>стрижка</h3>
+          <p>Форма, текстура и аккуратная работа с деталями.</p>
+        </div>
+        <div class="card-bottom"><span>Записаться</span><span class="arrow">↗</span></div>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <div>
+          <h3>Борода<br>& усы</h3>
+          <p>Чёткие линии и форма, которая дополняет образ.</p>
+        </div>
+        <div class="card-bottom"><span>Записаться</span><span class="arrow">↗</span></div>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <div>
+          <h3>Комплекс</h3>
+          <p>Стрижка + борода для полного обновления образа.</p>
+        </div>
+        <div class="card-bottom"><span>Записаться</span><span class="arrow">↗</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="feature">
+      <div class="feature-visual"></div>
+      <div class="feature-copy">
+        <div class="kicker">02 / подход</div>
+        <h2>Не поток.<br>А стиль.</h2>
+        <p>Мы за внимание к деталям, нормальную коммуникацию и результат, который подходит именно тебе.</p>
+        <div class="points">
+          <div class="point"><span class="check">✓</span> Подбор формы под лицо и стиль</div>
+          <div class="point"><span class="check">✓</span> Внимание к деталям</div>
+          <div class="point"><span class="check">✓</span> Комфортная атмосфера</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="masters">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">03 / команда</div>
+        <h2 class="section-title">Люди,<br>которым можно доверять.</h2>
+      </div>
+      <p class="section-text">Здесь можно разместить реальные фотографии мастеров, их специализацию и ссылки на соцсети.</p>
+    </div>
+
+    <div class="masters">
+      <div class="master"><div class="master-info"><div class="master-num">MASTER 01</div><h3>Имя мастера</h3><p>Стрижки / fade / styling</p></div></div>
+      <div class="master"><div class="master-info"><div class="master-num">MASTER 02</div><h3>Имя мастера</h3><p>Стрижки / борода / styling</p></div></div>
+      <div class="master"><div class="master-info"><div class="master-num">MASTER 03</div><h3>Имя мастера</h3><p>Classic / modern / beard</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container cta-inner">
+    <div>
+      <div class="kicker">04 / запись</div>
+      <h2>Готов<br>обновиться?</h2>
+      <a class="btn" href="https://taplink.cc/barbermafia" target="_blank">Записаться сейчас ↗</a>
+    </div>
+    <p>Выбери удобное время и приходи за новым образом.<br><br>BARBER MAFIA — CUT • STYLE • ATTITUDE</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">BARBER MAFIA</div>
+    <div>Сайт-концепт • Все права защищены</div>
+  </div>
+</footer>
+
+</body>
+</html>
